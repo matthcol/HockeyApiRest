@@ -14,7 +14,7 @@
 		 */
 		coldbox = {
 			// Application Setup
-			appName                  : getSystemSetting( "APPNAME", "Your app name here" ),
+			appName                  : getSystemSetting( "APPNAME", "Hockey Rest Api" ),
 			eventName                : "event",
 			// Development Settings
 			reinitPassword           : "",
@@ -154,7 +154,7 @@
 				// Information about your API
 				"info"          : {
 					// A title for your API
-					"title"          : "ColdBox REST Template",
+					"title"          : "Hockey REST API",
 					// A description of your API
 					"description"    : "This API produces amazing results and data.",
 					// A terms of service URL for your API

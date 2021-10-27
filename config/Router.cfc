@@ -14,6 +14,17 @@ component {
 		 *
 		 */
 
+		// Teams Resource
+        route( "/api/teams/:teamID" )
+            .withAction( {
+                GET    = 'view',
+                POST   = 'save',
+                PUT    = 'save',
+                DELETE = 'remove'
+            } )
+            .toHandler( "api.teams" );
+		get("/api/teams", "api.teams.index");
+
 		// A nice healthcheck route example
 		route( "/healthcheck", function( event, rc, prc ) {
 			return "Ok!";
