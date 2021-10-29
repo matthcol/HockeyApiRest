@@ -1,4 +1,5 @@
 # General Ignores + IDE
+.vscode/
 .DS_Store
 settings.xml
 WEB-INF
