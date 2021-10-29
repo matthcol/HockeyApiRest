@@ -75,13 +75,9 @@ component{
 	 * save
 	 */
 	function save( event, rc, prc ){
-		// writeDump(event);
-		// return { 
-		// 	message: "save new team",
-		// 	// name: rc.name,
-		// 	rc=rc
-		// };
-		event.renderData(type="JSON", data={ id=10000}, statusCode=201);
+		local.id = teamService.add(rc);
+		return local.id;
+		// event.renderData(type="JSON", data={ id=10000}, statusCode=201);
 	}
 
 	/**

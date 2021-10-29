@@ -14,7 +14,7 @@ component {
 		 *
 		 */
 		
-		route( "/api/teams/:teamID-numeric" )
+		route( "/api/teams/:teamID" )
             .withAction( {
                 GET    = 'byId',
                 PUT    = 'modify',
