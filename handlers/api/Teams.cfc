@@ -3,6 +3,9 @@
  */
 component{
 
+	// DI
+	property name="teamService" inject="TeamService";
+
 	// OPTIONAL HANDLER PROPERTIES
 	this.prehandler_only 	= "";
 	this.prehandler_except 	= "";
@@ -58,50 +61,14 @@ component{
 	 * index
 	 */
 	function index( event, rc, prc ){
-		return "all teams";
+		return teamService.getAll();
 	}
 
 	/**
 	 * byId
 	 */
 	function byId( event, rc, prc ){
-		// try {
-			param rc.lang = "";
-			// param rc.active = true;
-			//param required rc.active boolean;
-			param rc.active  = true boolean;
-			//cfparam(name="rc.active", default=true, type="boolean");
-			// writeDump(event);
-			//writeDump(GetHttpRequestData());
-			// log.info("get teamby id" & rc.teamID);
-			// return { 
-			// 	id = rc.teamID,
-			// 	name = "Les Canadiens",
-			// 	lang =rc.lang,
-			// 	active=rc.active,
-			// 	rc=rc
-			// };
-			event.renderData(
-				data={ 
-					id = rc.teamID,
-					name = "Les Canadiens",
-					lang =rc.lang,
-					active=rc.active,
-					rc=rc
-				},
-				// type="xml"		// handlerimpose le converter
-				formats="xml,json"  // laisse le choix au client (header Accept)
-				);
-		// } catch (any e) {
-		// 	event.renderData(
-		// 			type="JSON", 
-		// 			data={
-		// 				message="Bad Request : get team by id with these arguments",
-		// 				arguments=rc
-		// 			},
-		// 			statusCode=400
-		// 	);
-		// }
+		return teamService.getById(rc.teamID);
 	}
 
 	/**
