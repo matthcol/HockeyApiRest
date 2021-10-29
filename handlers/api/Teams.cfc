@@ -76,22 +76,25 @@ component{
 	 */
 	function save( event, rc, prc ){
 		local.id = teamService.add(rc);
-		return local.id;
-		// event.renderData(type="JSON", data={ id=10000}, statusCode=201);
+		event.renderData(type="JSON", data=local.id, statusCode=201);
 	}
 
 	/**
 	 * modify
 	 */
 	function modify( event, rc, prc ){
-		return "modify team";
+		teamService.modify(rc.teamID, rc);
+		event.renderData(type="JSON", data={}, statusCode=200);
+		// event.renderData(statusCode=204);
 	}
 
 	/**
 	 * remove
 	 */
 	function remove( event, rc, prc ){
-		event.renderData(type="JSON",data="delete team");
+		teamService.remove(rc.teamID);
+		//event.renderData(statusCode=204);
+		event.renderData(type="JSON", data={}, statusCode=200);
 	}
 
 

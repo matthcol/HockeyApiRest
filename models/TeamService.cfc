@@ -55,14 +55,14 @@ component singleton {
 	/**
 	 * modify
 	 */
-	function modify(){
+	function modify(required id, required team){
 
 	}
 
 	/**
 	 * remove
 	 */
-	function remove(){
+	function remove(required id){
 
 	}
 
