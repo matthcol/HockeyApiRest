@@ -68,7 +68,15 @@ component{
 	 * byId
 	 */
 	function byId( event, rc, prc ){
-		return teamService.getById(rc.teamID);
+		local.team =  teamService.getById(rc.teamID);
+		if (team.getId() == "") {
+			event.renderData(
+					type="JSON", 
+					data={message: "id not found"}, 
+					statusCode=400);
+		} else {
+			return local.team;
+		}
 	}
 
 	/**
@@ -83,8 +91,15 @@ component{
 	 * modify
 	 */
 	function modify( event, rc, prc ){
-		teamService.modify(rc.teamID, rc);
-		event.renderData(type="JSON", data={}, statusCode=200);
+		local.ok = teamService.modify(rc.teamID, rc);
+		if (ok) {
+			event.renderData(type="JSON", data={}, statusCode=200);
+		} else {
+			event.renderData(
+					type="JSON", 
+					data={message: "id inconsitent with data or id not found"}, 
+					statusCode=400);
+		}
 		// event.renderData(statusCode=204);
 	}
 
@@ -92,11 +107,16 @@ component{
 	 * remove
 	 */
 	function remove( event, rc, prc ){
-		teamService.remove(rc.teamID);
+		local.index = teamService.remove(rc.teamID);
 		//event.renderData(statusCode=204);
-		event.renderData(type="JSON", data={}, statusCode=200);
+		if (local.index > 0) {
+			event.renderData(type="JSON", data={}, statusCode=200);
+		} else {
+			event.renderData(
+					type="JSON", 
+					data={ message: "no team found with id " & rc.teamID },
+					statusCode=400);			
+		}
 	}
-
-
 
 }
